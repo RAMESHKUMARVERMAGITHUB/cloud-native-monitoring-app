@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-native-monitoring-app-deployment
+spec:
+  replicas: 2  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: cloud-native-monitoring-app
+  template:
+    metadata:
+      labels:
+        app: cloud-native-monitoring-app
+    spec:
+      containers:
+      - name: cloud-native-monitoring-app
+        image: rameshkumarverma/cloud-native-monitoring-app:latest
+        ports:
+        - containerPort: 5000
